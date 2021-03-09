@@ -1,7 +1,10 @@
+$header-height: 100px;
+
 body {
   margin: 0px;
   font-family: "Comfortaa", cursive;
   font-size: 18px;
+  padding-top: $header-height;
 }
 
 a {
@@ -25,6 +28,12 @@ button {
   color: white;
   cursor: pointer;
   box-shadow: -3px 0px 4px 0px rgb(177 177 177);
+  &:hover {
+    opacity: 0.8;
+  }
+  &:focus {
+    outline: none;
+  }
 }
 
 h1 {
@@ -35,11 +44,18 @@ h1 {
 
 header {
   background-color: black;
-  height: 100px;
+  height: $header-height;
+  width: calc(100% - 20px);
+  min-width: 965px;
   display: flex;
   align-items: center;
   color: white;
   padding: 0 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  box-shadow: 0 5px 6px 0 rgb(0 0 0 / 30%);
 
   .logo {
     width: 25%;
@@ -56,11 +72,32 @@ header {
     .button {
       padding: 5px 0;
       margin: 0 20px;
-      border-top: 2px solid transparent;
-      border-bottom: 2px solid transparent;
+      position: relative;
 
-      &.selected {
-        border-color: white;
+      &::after,
+      &::before {
+        content: "";
+        width: 0;
+        height: 2px;
+        background: white;
+        opacity: 0;
+        transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        position: absolute;
+        left: 0;
+      }
+
+      &::before {
+        top: -5px;
+      }
+
+      &::after {
+        bottom: -5px;
+      }
+
+      &.selected::after,
+      &.selected::before {
+        width: 100%;
+        opacity: 1;
       }
     }
   }
@@ -80,12 +117,23 @@ header {
   }
 }
 
+@media (max-width: 1500px) {
+  header > div:last-child {
+    display: none;
+  }
+}
+
 section#accueil {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 100px);
   position: relative;
+
+  &,
+  .background {
+    height: calc(100vh - 100px);
+    min-height: 640px;
+  }
 
   .background {
     background: url(../img/background.jpg);
@@ -94,7 +142,6 @@ section#accueil {
     position: absolute;
     top: 0;
     left: 0;
-    height: calc(100vh - 100px);
     width: 100%;
     opacity: 0.85;
   }
@@ -104,14 +151,15 @@ section#accueil {
     img {
       display: block;
       margin: auto;
+      max-width: 75vw;
     }
 
     img.line {
-      height: 310px;
+      max-height: 310px;
     }
 
     img.toile {
-      height: 208px;
+      max-height: 208px;
     }
   }
 }
@@ -130,6 +178,39 @@ section#galerie {
 
     img {
       width: 100%;
+    }
+
+    .opened {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      z-index: 3;
+      border: 10px solid rgba(0, 0, 0, 0.8);
+      background-size: contain;
+      background-clip: padding-box;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: rgba(0, 0, 0, 0.8);
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+      transform: scale(0);
+
+      .close {
+        position: fixed;
+        top: 0;
+        right: 0;
+        color: white;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        font-size: 25px;
+        cursor: pointer;
+      }
+    }
+
+    &.selected .opened {
+      opacity: 1;
+      transform: scale(1);
     }
 
     .overlay {
@@ -241,16 +322,35 @@ section#contact {
       }
     }
 
+    > form button {
+      margin-top: 10px;
+    }
+
     .text {
       width: 50%;
       p {
         line-height: 1.6;
         text-align: justify;
+        &:first-child {
+          margin-top: 0;
+        }
       }
-      a {
-        text-decoration: underline;
-        cursor: pointer;
+      form {
+        width: 100%;
+        input {
+          margin: 0;
+          width: 100%;
+        }
       }
+    }
+
+    button {
+      margin: 0 0 0 10px;
+      width: auto;
+      font-size: 16px;
+      padding: 5px 10px;
+      min-width: auto;
+      min-height: auto;
     }
   }
 }
