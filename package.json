@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "compile": "parcel build index.html --public-url ./",
+    "deploy": "npm run compile && mv -f dist ../latoileenlairtmpdist && git checkout master && rm ./* && cp ../latoileenlairtmpdist/* ./ && git add -A . && git commit -m \"update\" && git push && git checkout dev",
     "dev": "parcel index.html"
   },
   "repository": {
