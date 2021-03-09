@@ -20,6 +20,6 @@
   "homepage": "https://github.com/simple-acces/latoileenlaire#readme",
   "devDependencies": {
     "parcel": "1.12.3",
-    "sass": "1.32.8"
+    "sass": "^1.32.8"
   }
 }
