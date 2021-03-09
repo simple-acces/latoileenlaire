@@ -1,0 +1,24 @@
+{
+  "name": "la-toile-en-laire",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "compile": "parcel build index.html --public-url ./",
+    "dev": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:simple-acces/latoileenlaire.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simple-acces/latoileenlaire/issues"
+  },
+  "homepage": "https://github.com/simple-acces/latoileenlaire#readme",
+  "devDependencies": {
+    "parcel": "1.12.3",
+    "sass": "1.32.8"
+  }
+}

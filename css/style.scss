@@ -1,0 +1,261 @@
+body {
+  margin: 0px;
+  font-family: "Comfortaa", cursive;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  opacity: 0.9;
+}
+
+button {
+  min-width: 220px;
+  min-height: 60px;
+  border-radius: 100px;
+  background: #fd827d;
+  margin: 50px auto;
+  display: block;
+  border: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  box-shadow: -3px 0px 4px 0px rgb(177 177 177);
+}
+
+h1 {
+  text-align: center;
+  margin: 70px;
+  font-size: 36px;
+}
+
+header {
+  background-color: black;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 0 10px;
+
+  .logo {
+    width: 25%;
+    img {
+      height: 66px;
+    }
+  }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+
+    .button {
+      padding: 5px 0;
+      margin: 0 20px;
+      border-top: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+
+      &.selected {
+        border-color: white;
+      }
+    }
+  }
+
+  .infos {
+    display: flex;
+    justify-content: flex-end;
+    width: 25%;
+
+    > div {
+      margin: 0 10px;
+    }
+
+    img {
+      height: 20px;
+    }
+  }
+}
+
+section#accueil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+  position: relative;
+
+  .background {
+    background: url(../img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: calc(100vh - 100px);
+    width: 100%;
+    opacity: 0.85;
+  }
+
+  .logo {
+    z-index: 2;
+    img {
+      display: block;
+      margin: auto;
+    }
+
+    img.line {
+      height: 310px;
+    }
+
+    img.toile {
+      height: 208px;
+    }
+  }
+}
+
+section#gallerie {
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 10px;
+  }
+
+  .grid .element {
+    width: calc((100vw / 4) - (5px * 3));
+    padding: 5px;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+
+    .overlay {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+      transform: scale(0.5);
+      background-color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      font-size: 24px;
+      cursor: pointer;
+
+      .divider {
+        width: 15px;
+        height: 2px;
+        margin: 15px auto;
+        background-color: black;
+      }
+    }
+
+    &:hover .overlay {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+section#bio {
+  text-align: center;
+
+  .divider {
+    margin: 100px auto;
+    width: 500px;
+    height: 4px;
+    background: black;
+  }
+
+  > img {
+    width: 540px;
+    margin-bottom: 70px;
+  }
+
+  > p {
+    width: 1000px;
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+}
+
+section#contact {
+  padding-bottom: 70px;
+  position: relative;
+  padding-top: 1px;
+
+  .background {
+    background: url(../img/contact.jpg);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.55;
+  }
+
+  h1 {
+    position: relative;
+    z-index: 2;
+  }
+
+  .container {
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    position: relative;
+
+    form {
+      width: 45%;
+      .flex {
+        display: flex;
+      }
+      input {
+        display: block;
+        width: 50%;
+        &:only-child {
+          width: 100%;
+        }
+      }
+
+      input,
+      textarea {
+        margin: 5px;
+        font-family: "Comfortaa", cursive;
+        padding: 3px 5px;
+      }
+    }
+
+    .text {
+      width: 50%;
+      p {
+        line-height: 1.6;
+        text-align: justify;
+      }
+      a {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+footer {
+  height: 100px;
+  background: black;
+}
